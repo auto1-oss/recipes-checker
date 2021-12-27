@@ -96,8 +96,8 @@ class GenerateFlexEndpointCommand extends Command
             '_links' => [
                 'repository' => sprintf('github.com/%s', $repository),
                 'origin_template' => sprintf('{package}:{version}@github.com/%s:%s', $repository, $sourceBranch),
-                'recipe_template' => sprintf('https://raw.githubusercontent.com/%s/%s/{package_dotted}.{version}.json', $repository, $flexBranch),
-                'archived_recipes_template' => sprintf('https://raw.githubusercontent.com/%s/%s/archived/{package_dotted}/{ref}.json', $repository, $flexBranch),
+                'recipe_template' => sprintf('https://api.github.com/repos/%s/contents/{package_dotted}.{version}.json?ref=%s', $repository, $flexBranch),
+                'archived_recipes_template' => sprintf('https://api.github.com/repos/%s/contents/archived/{package_dotted}.{version}.json?ref=%s', $repository, $flexBranch),
             ],
         ], \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES)."\n");
 
